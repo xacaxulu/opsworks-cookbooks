@@ -1,4 +1,6 @@
 execute 'build_cluster' do
+  command "echo"
+  action :run
   instance_keys = node[:opsworks][:layers]['rabbitmq-base-node'][:instances].keys
   instances = node[:opsworks][:layers]['rabbitmq-base-node'][:instances]
   base_node = node[:opsworks][:layers]['rabbitmq-base-node'][:instances].first

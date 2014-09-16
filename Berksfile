@@ -4,5 +4,5 @@ metadata
 
 group :integration do
   cookbook 'erlang'
-  coolbook 'rabbitmq'
+  cookbook 'rabbitmq'
 end

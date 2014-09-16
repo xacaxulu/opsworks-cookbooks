@@ -5,7 +5,11 @@ execute 'build_cluster' do
   instance_keys = node[:opsworks][:layers]['rabbitmq-base-node'][:instances].keys
   base_node = node[:opsworks][:layers]['rabbitmq-base-node'][:instances][instance_keys.first]
   
-  Chef::Log.info(node['rabbitmq']['cluster'])
+  begin
+    Chef::Log.info(node['rabbitmq']['cluster'])
+  rescue
+  end
+  
   instance_keys.each do |key|
     Chef::Log.info("#{node[:opsworks][:layers]['rabbitmq-base-node'][:instances][key].first}")
     Chef::Log.info("#{base_node}")

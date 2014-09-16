@@ -1,6 +1,8 @@
 execute 'build_cluster' do
   command "echo 'whoami; whoami'"
   action :run
+  Chef::Log.info("#{node[:opsworks][:layers]['rabbitmq-base-node'][:instances]}")
+  Chef::Log.info("#{node[:opsworks][:layers]['rabbitmq-base-node'][:instances].keys}")
   Chef::Log.info("#{node[:opsworks][:layers]['rabbitmq-base-node'][:instances].first}")
   
 end

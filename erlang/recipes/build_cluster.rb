@@ -9,7 +9,7 @@ execute 'build_cluster' do
   Chef::Log.info("#{instance_keys.last}")
   Chef::Log.info("#{base_node}")
   instance_keys.each do |key|
-    if node[:opsworks][:layers]['rabbitmq-base-node'][:instances].key
+    if node[:opsworks][:layers]['rabbitmq-base-node'][:instances][key]
       command "sudo rabbitmqctl stop_app && sudo rabbitmqctl join_cluster rabbit@#{node[:opsworks][:layers]['rabbitmq-base-node'][:instances].first.first} &&
       sudo rabbitmqctl start_app"
       action :run

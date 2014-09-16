@@ -3,7 +3,7 @@ execute 'build_cluster' do
   action :run
   instance_keys = node[:opsworks][:layers]['rabbitmq-base-node'][:instances].keys
   instances = node[:opsworks][:layers]['rabbitmq-base-node'][:instances]
-  base_node = node[:opsworks][:layers]['rabbitmq-base-node'][:instances][0][0]
+  base_node = node[:opsworks][:layers]['rabbitmq-base-node'][:instances].first.first
   Chef::Log.info("#{node[:opsworks][:layers]['rabbitmq-base-node'][:instances].first}")
   Chef::Log.info("#{instance_keys.first}")
   # instance_keys.each do |key|

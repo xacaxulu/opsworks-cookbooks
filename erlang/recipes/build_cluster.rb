@@ -1,5 +1,5 @@
 execute 'build_cluster' do
-  Chef::Log.info("#{node[:opsworks][:layers][:instances].first}")
-  command "echo; whoami"
+  Chef::Log.info("#{node[:opsworks][:layers].keys}")
+  command "echo 'whoami; whoami'"
   action :run
 end

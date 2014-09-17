@@ -1,6 +1,5 @@
-execute 'build_cluster' do
-  command "echo"
-  action :run
+bash 'build_cluster' do
+  not_if "rabbitmqctl status", :returns => 2
   
   instance_keys = node[:opsworks][:layers]['rabbitmq-base-node'][:instances].keys
   base_node = node[:opsworks][:layers]['rabbitmq-base-node'][:instances][instance_keys.first]

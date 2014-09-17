@@ -1,7 +1,5 @@
-rabbitmq_policy "ha-all" do
+execute "ha_policy_all" do
   Chef::Log.info("setting ha policy to ha-all...")
-  pattern '^*\.'
-  params {"ha-mode"=>"all"}
-  priority 1
-  action :set
+  command 'rabbitmqctl set_policy ha-all "^ha\." "{"ha-mode":"all"}"'
+  action :run
 end

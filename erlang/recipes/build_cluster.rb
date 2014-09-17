@@ -1,6 +1,4 @@
-bash 'build_cluster' do
-  only_if "rabbitmqctl status", :returns => 0
-  
+execute 'build_cluster' do
   instance_keys.each do |key|
     Chef::Log.info("#{node[:opsworks][:layers]['rabbitmq-base-node'][:instances][key].first}")
     Chef::Log.info("#{base_node}")
@@ -8,6 +6,7 @@ bash 'build_cluster' do
       command "rabbitmqctl stop_app && rabbitmqctl join_cluster rabbit@#{node[:opsworks][:layers]['rabbitmq-base-node'][:instances].first.first} &&
       rabbitmqctl start_app"
       action :run
+      only_if "rabbitmqctl status", :returns => 0
     end
   end
 end
